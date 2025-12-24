@@ -16,11 +16,18 @@ jobs:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_KEY }}
+          host: 72.61.153.111
+          username: root
+          key: |
+            -----BEGIN OPENSSH PRIVATE KEY-----
+            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+            QyNTUxOQAAACCM/Mr3ROvsr0Gfsqk7tU8k+/Evhg2jw94z9pX0p7YmjAAAAJiC5bZsguW2
+            bAAAAAtzc2gtZWQyNTUxOQAAACCM/Mr3ROvsr0Gfsqk7tU8k+/Evhg2jw94z9pX0p7YmjA
+            AAAEDv5/kBD/1k8eb+P5OPKJD3JK0/thXYDbPL0yhHXaw2FYz8yvdE6+yvQZ+yqTu1TyT7
+            8S+GDaPD3jP2lfSntiaMAAAAFXJvb3RAbWFpbC50cmltbHl4LmFwcA==
+            -----END OPENSSH PRIVATE KEY-----
           script: |
-            cd ${{ secrets.APP_PATH }}
-            git reset --hard
-            git pull origin main
-            npm install --production
+            cd /var/www/apps/testproject/trimlyx-chat
+            git fetch --all
+            git checkout main
+            git reset --hard origin/main

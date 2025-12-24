@@ -75,6 +75,9 @@ io.on('connection', (socket) => {
 app.get('/', (req, res) => {
   res.send('Trimlyx chat server running');
 });
+app.get('/checkapp', (req, res) => {
+  res.send('Trimlyx chat server running');
+});
 
 const PORT = process.env.PORT || 5000;
 
