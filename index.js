@@ -49,12 +49,12 @@ io.on('connection', (socket) => {
 
     socket.emit('get-private-message', savedMessage);
      try {
-    const response = await axios.post(
-      'http://127.0.0.1:8000/api/v1/create-chat',
-      savedMessage
-    );
+    // const response = await axios.post(
+    //   'http://127.0.0.1:8000/api/v1/create-chat',
+    //   savedMessage
+    // );
 
-    console.log('Message saved:', response.data);
+    // console.log('Message saved:', response.data);
   } catch (error) {
     console.error(
       'Failed to save message:',
