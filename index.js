@@ -20,13 +20,10 @@ function broadcastOnlineUsers() {
 }
 
 io.on('connection', (socket) => {
-  console.log('A user connected:', socket.id);
-
   socket.on('authenticate', (userId) => {
     if (userId) {
       
       users[userId] = socket.id;
-     console.log(users, "fffffffffffff")
       socket.userId = userId;
       broadcastOnlineUsers();
       socket.emit('authenticated', { success: true });
@@ -81,7 +78,6 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-/* 🔥 THIS IS THE FIX */
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Socket server running on port ${PORT}`);
 });
