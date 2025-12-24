@@ -68,7 +68,7 @@ io.on('connection', (socket) => {
       delete users[socket.userId];
       broadcastOnlineUsers();
     }
-    console.log('User disconnected:', socket.id);
+   
   });
 });
 
